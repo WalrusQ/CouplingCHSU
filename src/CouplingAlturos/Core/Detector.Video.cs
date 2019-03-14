@@ -21,7 +21,7 @@ namespace CouplingAlturos.Core
 			    reader.Open(filename);
 			    var indexFrame = 0;
 
-			    while (reader.IsOpen || !_cancellationTokenSource.IsCancellationRequested)
+			    while (reader.FrameCount - 1 > indexFrame && !_cancellationTokenSource.IsCancellationRequested)
 			    {
 				    var frame = reader.ReadVideoFrame();
 				    var result = ProcessImage(frame);
@@ -44,6 +44,7 @@ namespace CouplingAlturos.Core
 			    }
 
 			    reader.Close();
+			    OnVideoClosed();
 		    }
 		}
 
@@ -70,5 +71,5 @@ namespace CouplingAlturos.Core
 			_thread = new Thread(x => ProcThread(filename, progress));
 			_thread.Start();
 		}
-	}
+    }
 }

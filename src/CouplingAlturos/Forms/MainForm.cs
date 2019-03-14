@@ -52,11 +52,16 @@ namespace CouplingAlturos
             Detector = detector;
             Logger = logger;
             InitializeComponent();
-
+			Detector.VideoClosed += DetectorOnVideoClosed;
             toolStripStatusLabelYoloInfo.Text = $@"Detection system: {Detector.YoloMetaInfo.DetectionSystem}";
         }
 
-		private void OpenBtn_Click(object sender, EventArgs e)
+        private void DetectorOnVideoClosed(object sender, EventArgs e)
+        {
+	        throw new NotImplementedException();
+        }
+
+        private void OpenBtn_Click(object sender, EventArgs e)
 		{ 
 			using (var ofd = new OpenFileDialog() { Filter = @"Image files(*.png; *.jpg; *.jpeg *.bmp | *.png; *.jpg; *.jpeg *.bmp" })
 			{
@@ -79,7 +84,7 @@ namespace CouplingAlturos
         private void BtnOpenVideo_Click(object sender, EventArgs e)
         {
 
-            using (var ofd = new OpenFileDialog() { Filter = @"Video File(*.avi | *.avi" })
+            using (var ofd = new OpenFileDialog() { Filter = @"Video File(*.avi) | *.avi; *.mp4" })
             {
                 if (ofd.ShowDialog() == DialogResult.OK)
                 {
@@ -140,6 +145,9 @@ namespace CouplingAlturos
             {
                 Logger.Save($"{DateTime.Now:dd/MM/yy HH-mm-ss}");
             }
+
+            Detector.VideoClosed -= DetectorOnVideoClosed;
+
         }
 
         private void TestImagesProcess(ImageRecognitionResult result)

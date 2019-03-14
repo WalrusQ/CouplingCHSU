@@ -131,6 +131,9 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Content Include="x64\cudnn64_7.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\mynames.names">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

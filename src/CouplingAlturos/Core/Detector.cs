@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading;
 using Alturos.Yolo;
@@ -10,6 +11,8 @@ namespace CouplingAlturos.Core
 {
 	public partial class Detector : IDetector
 	{
+		public event EventHandler VideoClosed;
+
 		private readonly YoloWrapper _yolo;
 
 		private Thread _thread;
@@ -47,6 +50,11 @@ namespace CouplingAlturos.Core
 			{
 				_cancellationTokenSource.Cancel();
 			}
+		}
+
+		private void OnVideoClosed()
+		{
+			VideoClosed?.Invoke(this, EventArgs.Empty);
 		}
 	}
 }

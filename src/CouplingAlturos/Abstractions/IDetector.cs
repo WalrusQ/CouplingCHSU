@@ -21,5 +21,7 @@ namespace CouplingAlturos.Core
 
 		/// <summary> Создает поток для распознавания сцепок из видеофайла </summary>
 		void ProcessVideo(string filename, IProgress<VideoRecognitionResult> progress);
+		/// <summary> Событие при закрытии видеофайла </summary>
+		event EventHandler VideoClosed;
 	}
 }
