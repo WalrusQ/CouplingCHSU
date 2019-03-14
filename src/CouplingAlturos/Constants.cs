@@ -6,6 +6,8 @@
 
 		public static string LogsFolder = "Logs/";
 
+        public static string ResultFolder = "Results/";
+
 		public static bool GpuEnabled = false;
 
 		public static string TeamName = "team6";

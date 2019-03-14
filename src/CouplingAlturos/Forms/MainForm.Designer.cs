@@ -41,6 +41,7 @@
             this.btnOpenFile = new System.Windows.Forms.Button();
             this.StatusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabelYoloInfo = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.groupBoxResult = new System.Windows.Forms.GroupBox();
             this.btnOpenVideo = new System.Windows.Forms.Button();
             this.BtnStopVideo = new System.Windows.Forms.Button();
@@ -50,14 +51,13 @@
             this.label1 = new System.Windows.Forms.Label();
             this.OpenVideoTxtBx = new System.Windows.Forms.RichTextBox();
             this.LogTxtBx = new System.Windows.Forms.RichTextBox();
-            this.PauseBtn = new System.Windows.Forms.Button();
             this._playBtn = new System.Windows.Forms.Button();
             this.PhotoPg = new System.Windows.Forms.TabPage();
-            this.BtnOpenFolder = new System.Windows.Forms.Button();
-            this.picBx = new System.Windows.Forms.PictureBox();
-            this.OpenPhotoTxtBx = new System.Windows.Forms.RichTextBox();
             this.OpenFolderPhotoTxtBx = new System.Windows.Forms.RichTextBox();
-            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.BtnOpenFolder = new System.Windows.Forms.Button();
+            this.OpenPhotoTxtBx = new System.Windows.Forms.RichTextBox();
+            this.picBx = new System.Windows.Forms.PictureBox();
+            this._progressBar = new System.Windows.Forms.ProgressBar();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewResult)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.yoloItemBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic)).BeginInit();
@@ -172,6 +172,11 @@
             this.toolStripStatusLabelYoloInfo.Name = "toolStripStatusLabelYoloInfo";
             this.toolStripStatusLabelYoloInfo.Size = new System.Drawing.Size(0, 17);
             // 
+            // toolStripStatusLabel1
+            // 
+            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(0, 17);
+            // 
             // groupBoxResult
             // 
             this.groupBoxResult.Location = new System.Drawing.Point(13, 362);
@@ -192,7 +197,7 @@
             // 
             // BtnStopVideo
             // 
-            this.BtnStopVideo.Location = new System.Drawing.Point(172, 359);
+            this.BtnStopVideo.Location = new System.Drawing.Point(90, 360);
             this.BtnStopVideo.Name = "BtnStopVideo";
             this.BtnStopVideo.Size = new System.Drawing.Size(75, 23);
             this.BtnStopVideo.TabIndex = 5;
@@ -217,7 +222,6 @@
             this.VideoPg.Controls.Add(this.OpenVideoTxtBx);
             this.VideoPg.Controls.Add(this.LogTxtBx);
             this.VideoPg.Controls.Add(this.pic);
-            this.VideoPg.Controls.Add(this.PauseBtn);
             this.VideoPg.Controls.Add(this._playBtn);
             this.VideoPg.Controls.Add(this.BtnStopVideo);
             this.VideoPg.Controls.Add(this.btnOpenVideo);
@@ -263,16 +267,6 @@
             this.LogTxtBx.TabIndex = 6;
             this.LogTxtBx.Text = "";
             // 
-            // PauseBtn
-            // 
-            this.PauseBtn.Location = new System.Drawing.Point(91, 359);
-            this.PauseBtn.Name = "PauseBtn";
-            this.PauseBtn.Size = new System.Drawing.Size(75, 23);
-            this.PauseBtn.TabIndex = 5;
-            this.PauseBtn.Text = "Pause";
-            this.PauseBtn.UseVisualStyleBackColor = true;
-            this.PauseBtn.Click += new System.EventHandler(this.PauseBtn_Click);
-            // 
             // _playBtn
             // 
             this._playBtn.Enabled = false;
@@ -300,6 +294,14 @@
             this.PhotoPg.Text = "Фото";
             this.PhotoPg.UseVisualStyleBackColor = true;
             // 
+            // OpenFolderPhotoTxtBx
+            // 
+            this.OpenFolderPhotoTxtBx.Location = new System.Drawing.Point(84, 510);
+            this.OpenFolderPhotoTxtBx.Name = "OpenFolderPhotoTxtBx";
+            this.OpenFolderPhotoTxtBx.Size = new System.Drawing.Size(555, 22);
+            this.OpenFolderPhotoTxtBx.TabIndex = 10;
+            this.OpenFolderPhotoTxtBx.Text = "";
+            // 
             // BtnOpenFolder
             // 
             this.BtnOpenFolder.Location = new System.Drawing.Point(3, 509);
@@ -309,6 +311,14 @@
             this.BtnOpenFolder.Text = "Open Folder";
             this.BtnOpenFolder.UseVisualStyleBackColor = true;
             this.BtnOpenFolder.Click += new System.EventHandler(this.BtnOpenFolder_Click);
+            // 
+            // OpenPhotoTxtBx
+            // 
+            this.OpenPhotoTxtBx.Location = new System.Drawing.Point(90, 6);
+            this.OpenPhotoTxtBx.Name = "OpenPhotoTxtBx";
+            this.OpenPhotoTxtBx.Size = new System.Drawing.Size(555, 22);
+            this.OpenPhotoTxtBx.TabIndex = 8;
+            this.OpenPhotoTxtBx.Text = "";
             // 
             // picBx
             // 
@@ -321,32 +331,22 @@
             this.picBx.TabIndex = 3;
             this.picBx.TabStop = false;
             // 
-            // OpenPhotoTxtBx
+            // _progressBar
             // 
-            this.OpenPhotoTxtBx.Location = new System.Drawing.Point(90, 6);
-            this.OpenPhotoTxtBx.Name = "OpenPhotoTxtBx";
-            this.OpenPhotoTxtBx.Size = new System.Drawing.Size(555, 22);
-            this.OpenPhotoTxtBx.TabIndex = 8;
-            this.OpenPhotoTxtBx.Text = "";
-            // 
-            // OpenFolderPhotoTxtBx
-            // 
-            this.OpenFolderPhotoTxtBx.Location = new System.Drawing.Point(84, 510);
-            this.OpenFolderPhotoTxtBx.Name = "OpenFolderPhotoTxtBx";
-            this.OpenFolderPhotoTxtBx.Size = new System.Drawing.Size(555, 22);
-            this.OpenFolderPhotoTxtBx.TabIndex = 10;
-            this.OpenFolderPhotoTxtBx.Text = "";
-            // 
-            // toolStripStatusLabel1
-            // 
-            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(0, 17);
+            this._progressBar.Location = new System.Drawing.Point(561, 560);
+            this._progressBar.Maximum = 20000;
+            this._progressBar.Name = "_progressBar";
+            this._progressBar.Size = new System.Drawing.Size(100, 23);
+            this._progressBar.Step = 3;
+            this._progressBar.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
+            this._progressBar.TabIndex = 7;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(661, 582);
+            this.Controls.Add(this._progressBar);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.groupBoxResult);
             this.Controls.Add(this.StatusStrip);
@@ -393,7 +393,6 @@
         private System.Windows.Forms.PictureBox picBx;
         private System.Windows.Forms.RichTextBox OpenVideoTxtBx;
         private System.Windows.Forms.RichTextBox LogTxtBx;
-        private System.Windows.Forms.Button PauseBtn;
         private System.Windows.Forms.Button _playBtn;
         private System.Windows.Forms.Label CouplingCounterLabel;
         private System.Windows.Forms.Label label1;
@@ -401,6 +400,7 @@
         private System.Windows.Forms.RichTextBox OpenFolderPhotoTxtBx;
         private System.Windows.Forms.RichTextBox OpenPhotoTxtBx;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
+        private System.Windows.Forms.ProgressBar _progressBar;
     }
 }
 

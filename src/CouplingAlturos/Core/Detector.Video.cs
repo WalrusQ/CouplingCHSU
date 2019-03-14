@@ -32,7 +32,9 @@ namespace CouplingAlturos.Core
 					    FrameRate = reader.FrameRate.Numerator,
 					    ImageBytes = result.ImageBytes,
 					    IndexFrame = ++indexFrame,
-					    Items = result.Items
+					    Items = result.Items,
+                        TotalFrames = reader.FrameCount
+                        
 				    };
 
 				    progress.Report(report); //todo: Вместо progress сделать event

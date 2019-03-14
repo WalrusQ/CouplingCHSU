@@ -39,6 +39,8 @@ namespace CouplingAlturos
 
         private string _videoFile;
 
+        private int _incrementValue;
+        
         private VideoRecognitionResults _videoRecognitionResults;
 
 		public IDetector Detector { get; }
@@ -74,14 +76,6 @@ namespace CouplingAlturos
 			}
 		}
 
-		private void Form1_FormClosing(object sender, FormClosingEventArgs e)
-		{
-			if(_videoRecognitionResults != null)
-            {
-                Logger.Save($"{DateTime.Now:dd/MM/yy HH-mm-ss}");
-            }
-		}
-
         private void BtnOpenVideo_Click(object sender, EventArgs e)
         {
 
@@ -92,48 +86,10 @@ namespace CouplingAlturos
                     OpenVideoTxtBx.Text = ofd.FileName;
                     _videoFile = ofd.FileName;
                     pic.BackColor = Color.Black;
-                    _playBtn.Enabled = true; //Можно лочить кнопки в определенных условиях, можно просто обрабатывать множественные нажатия, как лучше сделать?
+                    _playBtn.Enabled = true;
+                    _progressBar.Value = 0;
                 }
-                //todo: Сохранение лога после окончания видео или же при остановке видео
             }
-        }
-
-		private void OnImageDetected(VideoRecognitionResult result)
-		{
-			pic.Image = result.ImageBytes.ToImage();
-			_videoRecognitionResults.Items.Add(result);
-			if (_videoRecognitionResults.Items.Count > Constants.FrameLimit)
-			{
-				var validator = new FramesValidator(_videoRecognitionResults.Items);
-				if (validator.IsValid)
-				{
-                    pic.Image = result.AppendBorder();
-					if (result.IndexFrame - _videoRecognitionResults.LastFrame > Constants.FrameDifference)
-					{
-						_videoRecognitionResults.Counter++;
-						CouplingCounterLabel.Text = _videoRecognitionResults.Counter.ToString();
-						foreach (var item in result.Items)
-						{
-                            LogMsg(item, result);
-						}
-					}
-					_videoRecognitionResults.LastFrame = result.IndexFrame;
-
-				}
-				_videoRecognitionResults.Items.RemoveAt(0);
-			}
-		}
-        
-        private void LogMsg(YoloItem item, VideoRecognitionResult result)
-        {
-            var msg = new StringBuilder();
-            msg.AppendLine("Номер кадра: " + result.IndexFrame);
-            msg.AppendLine("Координата центра X: " + item.X);
-            msg.AppendLine("Координата центра Y: " + item.Y);
-            msg.AppendLine("Ширина: " + item.Width);
-            msg.AppendLine("Высота: " + item.Height);
-            Logger.WriteLine(msg.ToString());
-            LogTxtBx.AppendText(Logger.Messages.Last() + "\r\n");
         }
 
 		private void PlayBtn_Click(object sender, EventArgs e)
@@ -141,6 +97,7 @@ namespace CouplingAlturos
             _playBtn.Enabled = false;
 			_videoRecognitionResults = new VideoRecognitionResults();
             var progress = new Progress<VideoRecognitionResult>(OnImageDetected);
+    
             Detector.ProcessVideo(_videoFile, progress);
         }
 
@@ -158,14 +115,16 @@ namespace CouplingAlturos
 
                     var images = allFiles.Where(file => Regex.IsMatch(file.Name, @".jpg|.png|.jpeg|.bmp$"))
                                          .Select(x => Image.FromFile(x.FullName).WithTag(x.Name));
-					//todo: теперь в ImageRecognitionResult есть image name, но решение это мне не нравится
 
-					//todo: напиши прогресс
-					var progress = new Progress<ImageRecognitionResult>();
+                    _incrementValue = _progressBar.Maximum / images.Count();
+					var progress = new Progress<ImageRecognitionResult>(TestImagesProcess);
+
 					Detector.ProcessImages(images, progress);
 				} 
 			}
 		}
+
+
 
         private void BtnStopVideo_Click(object sender, EventArgs e)
         {
@@ -175,9 +134,65 @@ namespace CouplingAlturos
             _playBtn.Enabled = true;
         }
 
-        private void PauseBtn_Click(object sender, EventArgs e)
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            //todo: Все таки нужно сделать паузу
+            if (_videoRecognitionResults != null)
+            {
+                Logger.Save($"{DateTime.Now:dd/MM/yy HH-mm-ss}");
+            }
+        }
+
+        private void TestImagesProcess(ImageRecognitionResult result)
+        {
+            result.SaveToJson(Constants.ResultFolder, result.ImageName);
+
+            _progressBar.Increment(_incrementValue);
+            if (_progressBar.Value == _progressBar.Maximum)
+            {
+                toolStripStatusLabel1.Text = "Done.";
+                _progressBar.Value = 0;
+            }
+        }
+
+        private void OnImageDetected(VideoRecognitionResult result)
+        {
+
+            _incrementValue = (int)(_progressBar.Maximum / result.TotalFrames);
+            pic.Image = result.ImageBytes.ToImage();
+            _videoRecognitionResults.Items.Add(result);
+            _progressBar.Increment(_incrementValue);
+            if (_videoRecognitionResults.Items.Count > Constants.FrameLimit)
+            {
+                var validator = new FramesValidator(_videoRecognitionResults.Items);
+                if (validator.IsValid)
+                {
+                    pic.Image = result.AppendBorder();
+                    if (result.IndexFrame - _videoRecognitionResults.LastFrame > Constants.FrameDifference)
+                    {
+                        _videoRecognitionResults.Counter++;
+                        CouplingCounterLabel.Text = _videoRecognitionResults.Counter.ToString();
+                        foreach (var item in result.Items)
+                        {
+                            LogMsg(item, result);
+                        }
+                    }
+                    _videoRecognitionResults.LastFrame = result.IndexFrame;
+
+                }
+                _videoRecognitionResults.Items.RemoveAt(0);
+            }
+        }
+
+        private void LogMsg(YoloItem item, VideoRecognitionResult result)
+        {
+            var msg = new StringBuilder();
+            msg.AppendLine("Номер кадра: " + result.IndexFrame);
+            msg.AppendLine("Координата центра X: " + item.X);
+            msg.AppendLine("Координата центра Y: " + item.Y);
+            msg.AppendLine("Ширина: " + item.Width);
+            msg.AppendLine("Высота: " + item.Height);
+            Logger.WriteLine(msg.ToString());
+            LogTxtBx.AppendText(Logger.Messages.Last() + "\r\n");
         }
     }
 }
