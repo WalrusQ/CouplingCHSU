@@ -82,7 +82,8 @@ namespace CouplingAlturos
                 Logger.Save($@"{DateTime.Now:dd/MM/yy HH-mm-ss}");
                 Logger.Clear();
             }
-            _playBtn.Enabled = true;
+
+            _playBtn.SetPropertyThreadSafe(() => _playBtn.Enabled, true);
         }
 
         private void OpenBtn_Click(object sender, EventArgs e)

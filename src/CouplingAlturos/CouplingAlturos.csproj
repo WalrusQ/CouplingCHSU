@@ -85,6 +85,7 @@
     <Compile Include="Core\Extensions\RecognitionResultSaver.cs" />
     <Compile Include="Core\Detector.cs" />
     <Compile Include="Abstractions\IDetector.cs" />
+    <Compile Include="Core\Extensions\ThreadSafeExtension.cs" />
     <Compile Include="Core\Logger.cs" />
     <Compile Include="Core\Models\FramesValidator.cs" />
     <Compile Include="Core\Models\LogMessage.cs" />
