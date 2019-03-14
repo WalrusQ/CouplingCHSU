@@ -58,7 +58,13 @@ namespace CouplingAlturos
 
         private void DetectorOnVideoClosed(object sender, EventArgs e)
         {
-	        throw new NotImplementedException();
+            Detector.Stop();
+            if (Logger.Messages.Any())
+            {
+                Logger.Save($@"{DateTime.Now:dd/MM/yy HH-mm-ss}");
+                Logger.Clear();
+            }
+            _playBtn.Enabled = true;
         }
 
         private void OpenBtn_Click(object sender, EventArgs e)
@@ -92,13 +98,14 @@ namespace CouplingAlturos
                     _videoFile = ofd.FileName;
                     pic.BackColor = Color.Black;
                     _playBtn.Enabled = true;
-                    _progressBar.Value = 0;
+                    
                 }
             }
         }
 
 		private void PlayBtn_Click(object sender, EventArgs e)
 		{
+            _progressBar.Value = 0;
             _playBtn.Enabled = false;
 			_videoRecognitionResults = new VideoRecognitionResults();
             var progress = new Progress<VideoRecognitionResult>(OnImageDetected);
@@ -122,22 +129,13 @@ namespace CouplingAlturos
                                          .Select(x => Image.FromFile(x.FullName).WithTag(x.Name));
 
                     _incrementValue = _progressBar.Maximum / images.Count();
+                    _progressBar.Value = 0;
 					var progress = new Progress<ImageRecognitionResult>(TestImagesProcess);
 
 					Detector.ProcessImages(images, progress);
 				} 
 			}
 		}
-
-
-
-        private void BtnStopVideo_Click(object sender, EventArgs e)
-        {
-            Detector.Stop();
-            Logger.Save($@"{DateTime.Now:dd/MM/yy HH-mm-ss}");
-            Logger.Clear();
-            _playBtn.Enabled = true;
-        }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -155,11 +153,7 @@ namespace CouplingAlturos
             result.SaveToJson(Constants.ResultFolder, result.ImageName);
 
             _progressBar.Increment(_incrementValue);
-            if (_progressBar.Value == _progressBar.Maximum)
-            {
-                toolStripStatusLabel1.Text = "Done.";
-                _progressBar.Value = 0;
-            }
+
         }
 
         private void OnImageDetected(VideoRecognitionResult result)
