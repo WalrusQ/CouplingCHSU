@@ -17,7 +17,7 @@ namespace CouplingAlturos.Core
 		IRecognitionResult ProcessImage(Image image);
 
 		/// <summary> Обрабатывает изображения. Только для тестов. </summary>
-		void ProcessImages(IEnumerable<Image> images, IProgress<IRecognitionResult> progress);
+		void ProcessImages(IEnumerable<Image> images, IProgress<ImageRecognitionResult> progress);
 
 		/// <summary> Создает поток для распознавания сцепок из видеофайла </summary>
 		void ProcessVideo(string filename, IProgress<VideoRecognitionResult> progress);

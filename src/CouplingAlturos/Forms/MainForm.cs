@@ -158,10 +158,10 @@ namespace CouplingAlturos
 
                     var images = allFiles.Where(file => Regex.IsMatch(file.Name, @".jpg|.png|.jpeg|.bmp$"))
                                          .Select(x => Image.FromFile(x.FullName).WithTag(x.Name));
-					//todo: в изображении в св-ве Tag хранится название изображения. Протестируй.
+					//todo: теперь в ImageRecognitionResult есть image name, но решение это мне не нравится
 
 					//todo: напиши прогресс
-					var progress = new Progress<IRecognitionResult>();
+					var progress = new Progress<ImageRecognitionResult>();
 					Detector.ProcessImages(images, progress);
 				} 
 			}

@@ -2,10 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
-using System.Linq;
 using System.Threading;
-using Alturos.Yolo;
-using CouplingAlturos.Abstractions;
 using CouplingAlturos.Core.Converters;
 using CouplingAlturos.Core.Models;
 
@@ -25,14 +22,15 @@ namespace CouplingAlturos.Core
 			{
 				ElapsedTime = stopwatch.Elapsed,
 				Items = items,
-				ImageBytes = bytes
+				ImageBytes = bytes,
+				ImageName = image.Tag?.ToString()
 			};
 		}
 
 		/// <summary>
 		/// Обрабатывает изображения. Только для тестов. 
 		/// </summary>
-		public void ProcessImages(IEnumerable<Image> images, IProgress<IRecognitionResult> progress)
+		public void ProcessImages(IEnumerable<Image> images, IProgress<ImageRecognitionResult> progress)
 		{
 
 			if(_thread != null)
@@ -59,7 +57,7 @@ namespace CouplingAlturos.Core
 				foreach(var image in images)
 				{
 					var result = ProcessImage(image);
-					progress.Report(result);
+					progress.Report(result as ImageRecognitionResult);
 					if(_cancellationTokenSource.IsCancellationRequested) break;
 				}
 			});
