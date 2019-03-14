@@ -82,7 +82,7 @@
     <Compile Include="Core\Models\RecognitionResults\ImageRecognitionResult.cs" />
     <Compile Include="Core\Models\RecognitionResults\VideoRecognitionResult.cs" />
     <Compile Include="Core\Models\YoloMetaInfo.cs" />
-    <Compile Include="Core\Extensions\ImageBorderExtension.cs" />
+    <Compile Include="Core\Extensions\ImageExtension.cs" />
     <Compile Include="Forms\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -120,17 +120,13 @@
     <Content Include="Resources\yolov3-second.cfg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\yolov3-second_5720.weights">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    <Content Include="Resources\yolov3-second_5720.weights" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Resources\test.avi">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    <Content Include="Resources\test.avi" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Accord">

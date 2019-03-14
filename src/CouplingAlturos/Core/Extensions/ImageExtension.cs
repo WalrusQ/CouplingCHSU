@@ -8,7 +8,7 @@ using CouplingAlturos.Core.Models;
 
 namespace CouplingAlturos.Core.Extensions
 {
-	public static class ImageBorderExtension
+	public static class ImageExtension
 	{
         public static Image AppendBorder(this IRecognitionResult result)
         {
@@ -26,6 +26,12 @@ namespace CouplingAlturos.Core.Extensions
             }
             return image;
         }
+
+		public static Image WithTag(this Image image, object tag)
+		{
+			image.Tag = tag;
+			return image;
+		}
     }
 
 }

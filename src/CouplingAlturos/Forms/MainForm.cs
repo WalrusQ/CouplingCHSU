@@ -157,10 +157,11 @@ namespace CouplingAlturos
                     var allFiles = path.GetFiles("*.*");
 
                     var images = allFiles.Where(file => Regex.IsMatch(file.Name, @".jpg|.png|.jpeg|.bmp$"))
-                                         .Select(x => Image.FromFile(x.FullName));
+                                         .Select(x => Image.FromFile(x.FullName).WithTag(x.Name));
+					//todo: в изображении в св-ве Tag хранится название изображения. Протестируй.
 
-	                //todo: напиши прогресс
-                    var progress = new Progress<IRecognitionResult>();
+					//todo: напиши прогресс
+					var progress = new Progress<IRecognitionResult>();
 					Detector.ProcessImages(images, progress);
 				} 
 			}
