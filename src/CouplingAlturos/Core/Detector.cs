@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
-using System.Linq;
 using System.Threading;
 using Alturos.Yolo;
-using CouplingAlturos.Abstractions;
-using CouplingAlturos.Core.Converters;
 using CouplingAlturos.Core.Models;
 
 namespace CouplingAlturos.Core

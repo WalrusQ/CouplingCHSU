@@ -1,8 +1,4 @@
-﻿using System;
-using System.Drawing;
-using System.IO;
-using System.Xml;
-using Accord.IO;
+﻿using System.Drawing;
 using CouplingAlturos.Core.Converters;
 using CouplingAlturos.Core.Models;
 

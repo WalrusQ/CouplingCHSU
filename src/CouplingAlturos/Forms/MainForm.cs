@@ -1,16 +1,10 @@
-﻿using Accord.Video.FFMPEG;
-using Alturos.Yolo;
-using Alturos.Yolo.Model;
+﻿using Alturos.Yolo.Model;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Diagnostics;
 using System.Drawing;
-using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using CouplingAlturos.Abstractions;
 using CouplingAlturos.Core;
@@ -35,19 +29,29 @@ namespace CouplingAlturos
 			public long LastFrame { get; set; }
 	}
 
-        #endregion
+		#endregion
 
-        private string _videoFile;
+		#region Data
+
+		private string _videoFile;
 
         private int _incrementValue;
         
         private VideoRecognitionResults _videoRecognitionResults;
 
+		#endregion
+
+		#region Propirties
+
 		public IDetector Detector { get; }
 
 		public ILogger Logger { get; }
 
-        public MainForm(IDetector detector, ILogger logger)
+		#endregion
+
+		#region ctor & dsp
+
+		public MainForm(IDetector detector, ILogger logger)
         {
             Detector = detector;
             Logger = logger;
@@ -56,7 +60,21 @@ namespace CouplingAlturos
             toolStripStatusLabelYoloInfo.Text = $@"Detection system: {Detector.YoloMetaInfo.DetectionSystem}";
         }
 
-        private void DetectorOnVideoClosed(object sender, EventArgs e)
+		private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+		{
+			if (_videoRecognitionResults != null)
+			{
+				Logger.Save($"{DateTime.Now:dd/MM/yy HH-mm-ss}");
+			}
+
+			Detector.VideoClosed -= DetectorOnVideoClosed;
+		}
+
+		#endregion
+
+		#region Handlers
+
+		private void DetectorOnVideoClosed(object sender, EventArgs e)
         {
             Detector.Stop();
             if (Logger.Messages.Any())
@@ -69,9 +87,12 @@ namespace CouplingAlturos
 
         private void OpenBtn_Click(object sender, EventArgs e)
 		{ 
-			using (var ofd = new OpenFileDialog() { Filter = @"Image files(*.png; *.jpg; *.jpeg *.bmp | *.png; *.jpg; *.jpeg *.bmp" })
+			using (var ofd = new OpenFileDialog()
 			{
-				if (ofd.ShowDialog() == DialogResult.OK)
+				Filter = @"Image files(*.png; *.jpg; *.jpeg *.bmp | *.png; *.jpg; *.jpeg *.bmp"
+			})
+			{
+				if (ofd.ShowDialog(this) == DialogResult.OK)
 				{
 					var image = ofd.FileName;
 					if(image == null) return;
@@ -90,9 +111,12 @@ namespace CouplingAlturos
         private void BtnOpenVideo_Click(object sender, EventArgs e)
         {
 
-            using (var ofd = new OpenFileDialog() { Filter = @"Video File(*.avi) | *.avi; *.mp4" })
+            using (var ofd = new OpenFileDialog()
             {
-                if (ofd.ShowDialog() == DialogResult.OK)
+	            Filter = @"Video File(*.avi) | *.avi; *.mp4"
+            })
+            {
+                if (ofd.ShowDialog(this) == DialogResult.OK)
                 {
                     OpenVideoTxtBx.Text = ofd.FileName;
                     _videoFile = ofd.FileName;
@@ -126,9 +150,10 @@ namespace CouplingAlturos
                     var allFiles = path.GetFiles("*.*");
 
                     var images = allFiles.Where(file => Regex.IsMatch(file.Name, @".jpg|.png|.jpeg|.bmp$"))
-                                         .Select(x => Image.FromFile(x.FullName).WithTag(x.Name));
+                                         .Select(x => Image.FromFile(x.FullName).WithTag(x.Name))
+                                         .ToList();
 
-                    _incrementValue = _progressBar.Maximum / images.Count();
+                    _incrementValue = _progressBar.Maximum / images.Count;
                     _progressBar.Value = 0;
 					var progress = new Progress<ImageRecognitionResult>(TestImagesProcess);
 
@@ -137,23 +162,14 @@ namespace CouplingAlturos
 			}
 		}
 
-        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            if (_videoRecognitionResults != null)
-            {
-                Logger.Save($"{DateTime.Now:dd/MM/yy HH-mm-ss}");
-            }
+		#endregion
 
-            Detector.VideoClosed -= DetectorOnVideoClosed;
+		#region Methods
 
-        }
-
-        private void TestImagesProcess(ImageRecognitionResult result)
+		private void TestImagesProcess(ImageRecognitionResult result)
         {
             result.SaveToJson(Constants.ResultFolder, result.ImageName);
-
             _progressBar.Increment(_incrementValue);
-
         }
 
         private void OnImageDetected(VideoRecognitionResult result)
@@ -196,5 +212,7 @@ namespace CouplingAlturos
             Logger.WriteLine(msg.ToString());
             LogTxtBx.AppendText(Logger.Messages.Last() + "\r\n");
         }
-    }
+
+        #endregion
+	}
 }

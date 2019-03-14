@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
+﻿using System.IO;
 using System.Linq;
-using System.Xml;
-using Accord.IO;
 using CouplingAlturos.Core.Models;
 using Newtonsoft.Json;
 using Formatting = Newtonsoft.Json.Formatting;
