@@ -10,3 +10,5 @@
 [Weights](https://yadi.sk/d/i3_VZrdwvyy4CQ)
 
 [Test video](https://yadi.sk/i/ZwkR1kdQ4uALGQ)
+
+[cudnn64_7.dll](https://yadi.sk/d/zDbqoyIWez0BhA)
