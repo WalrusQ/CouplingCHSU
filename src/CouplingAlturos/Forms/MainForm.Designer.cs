@@ -30,216 +30,216 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            this.dataGridViewResult = new System.Windows.Forms.DataGridView();
-            this.typeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.confidenceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.xDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.yDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.widthDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.heightDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.yoloItemBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.pic = new System.Windows.Forms.PictureBox();
-            this.btnOpenFile = new System.Windows.Forms.Button();
-            this.btnOpenVideo = new System.Windows.Forms.Button();
-            this.BtnStopVideo = new System.Windows.Forms.Button();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.VideoPg = new System.Windows.Forms.TabPage();
-            this.CouplingCounterLabel = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.OpenVideoTxtBx = new System.Windows.Forms.RichTextBox();
-            this.LogTxtBx = new System.Windows.Forms.RichTextBox();
+            this._dataGridViewResult = new System.Windows.Forms.DataGridView();
+            this._typeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this._confidenceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this._xDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this._yDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this._widthDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this._heightDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this._yoloItemBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this._pic = new System.Windows.Forms.PictureBox();
+            this._btnOpenFile = new System.Windows.Forms.Button();
+            this._btnOpenVideo = new System.Windows.Forms.Button();
+            this._btnStopVideo = new System.Windows.Forms.Button();
+            this._tabControl1 = new System.Windows.Forms.TabControl();
+            this._videoPg = new System.Windows.Forms.TabPage();
+            this._couplingCounterLabel = new System.Windows.Forms.Label();
+            this._label1 = new System.Windows.Forms.Label();
+            this._openVideoTxtBx = new System.Windows.Forms.RichTextBox();
+            this._logTxtBx = new System.Windows.Forms.RichTextBox();
             this._playBtn = new System.Windows.Forms.Button();
-            this.PhotoPg = new System.Windows.Forms.TabPage();
-            this.OpenFolderPhotoTxtBx = new System.Windows.Forms.RichTextBox();
-            this.BtnOpenFolder = new System.Windows.Forms.Button();
-            this.OpenPhotoTxtBx = new System.Windows.Forms.RichTextBox();
-            this.picBx = new System.Windows.Forms.PictureBox();
-            this.toolStripStatusLabelYoloInfo = new System.Windows.Forms.ToolStripStatusLabel();
+            this._photoPg = new System.Windows.Forms.TabPage();
+            this._openFolderPhotoTxtBx = new System.Windows.Forms.RichTextBox();
+            this._btnOpenFolder = new System.Windows.Forms.Button();
+            this._openPhotoTxtBx = new System.Windows.Forms.RichTextBox();
+            this._picBx = new System.Windows.Forms.PictureBox();
+            this._toolStripStatusLabelYoloInfo = new System.Windows.Forms.ToolStripStatusLabel();
             this._progressBar = new System.Windows.Forms.ToolStripProgressBar();
-            this.StatusStrip = new System.Windows.Forms.StatusStrip();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewResult)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.yoloItemBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pic)).BeginInit();
-            this.tabControl1.SuspendLayout();
-            this.VideoPg.SuspendLayout();
-            this.PhotoPg.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picBx)).BeginInit();
-            this.StatusStrip.SuspendLayout();
+            this._statusStrip = new System.Windows.Forms.StatusStrip();
+            ((System.ComponentModel.ISupportInitialize)(this._dataGridViewResult)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this._yoloItemBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this._pic)).BeginInit();
+            this._tabControl1.SuspendLayout();
+            this._videoPg.SuspendLayout();
+            this._photoPg.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this._picBx)).BeginInit();
+            this._statusStrip.SuspendLayout();
             this.SuspendLayout();
             // 
-            // dataGridViewResult
+            // _dataGridViewResult
             // 
-            this.dataGridViewResult.AllowUserToAddRows = false;
-            this.dataGridViewResult.AllowUserToDeleteRows = false;
-            this.dataGridViewResult.AutoGenerateColumns = false;
-            this.dataGridViewResult.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewResult.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.typeDataGridViewTextBoxColumn,
-            this.confidenceDataGridViewTextBoxColumn,
-            this.xDataGridViewTextBoxColumn,
-            this.yDataGridViewTextBoxColumn,
-            this.widthDataGridViewTextBoxColumn,
-            this.heightDataGridViewTextBoxColumn});
-            this.dataGridViewResult.DataSource = this.yoloItemBindingSource;
-            this.dataGridViewResult.Location = new System.Drawing.Point(6, 460);
-            this.dataGridViewResult.Name = "dataGridViewResult";
-            this.dataGridViewResult.ReadOnly = true;
-            this.dataGridViewResult.Size = new System.Drawing.Size(643, 44);
-            this.dataGridViewResult.TabIndex = 0;
+            this._dataGridViewResult.AllowUserToAddRows = false;
+            this._dataGridViewResult.AllowUserToDeleteRows = false;
+            this._dataGridViewResult.AutoGenerateColumns = false;
+            this._dataGridViewResult.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this._dataGridViewResult.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this._typeDataGridViewTextBoxColumn,
+            this._confidenceDataGridViewTextBoxColumn,
+            this._xDataGridViewTextBoxColumn,
+            this._yDataGridViewTextBoxColumn,
+            this._widthDataGridViewTextBoxColumn,
+            this._heightDataGridViewTextBoxColumn});
+            this._dataGridViewResult.DataSource = this._yoloItemBindingSource;
+            this._dataGridViewResult.Location = new System.Drawing.Point(6, 460);
+            this._dataGridViewResult.Name = "_dataGridViewResult";
+            this._dataGridViewResult.ReadOnly = true;
+            this._dataGridViewResult.Size = new System.Drawing.Size(643, 44);
+            this._dataGridViewResult.TabIndex = 0;
             // 
-            // typeDataGridViewTextBoxColumn
+            // _typeDataGridViewTextBoxColumn
             // 
-            this.typeDataGridViewTextBoxColumn.DataPropertyName = "Type";
-            this.typeDataGridViewTextBoxColumn.HeaderText = "Type";
-            this.typeDataGridViewTextBoxColumn.Name = "typeDataGridViewTextBoxColumn";
-            this.typeDataGridViewTextBoxColumn.ReadOnly = true;
+            this._typeDataGridViewTextBoxColumn.DataPropertyName = "Type";
+            this._typeDataGridViewTextBoxColumn.HeaderText = "Type";
+            this._typeDataGridViewTextBoxColumn.Name = "_typeDataGridViewTextBoxColumn";
+            this._typeDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // confidenceDataGridViewTextBoxColumn
+            // _confidenceDataGridViewTextBoxColumn
             // 
-            this.confidenceDataGridViewTextBoxColumn.DataPropertyName = "Confidence";
-            this.confidenceDataGridViewTextBoxColumn.HeaderText = "Confidence";
-            this.confidenceDataGridViewTextBoxColumn.MaxInputLength = 4;
-            this.confidenceDataGridViewTextBoxColumn.Name = "confidenceDataGridViewTextBoxColumn";
-            this.confidenceDataGridViewTextBoxColumn.ReadOnly = true;
-            this.confidenceDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this._confidenceDataGridViewTextBoxColumn.DataPropertyName = "Confidence";
+            this._confidenceDataGridViewTextBoxColumn.HeaderText = "Confidence";
+            this._confidenceDataGridViewTextBoxColumn.MaxInputLength = 4;
+            this._confidenceDataGridViewTextBoxColumn.Name = "_confidenceDataGridViewTextBoxColumn";
+            this._confidenceDataGridViewTextBoxColumn.ReadOnly = true;
+            this._confidenceDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             // 
-            // xDataGridViewTextBoxColumn
+            // _xDataGridViewTextBoxColumn
             // 
-            this.xDataGridViewTextBoxColumn.DataPropertyName = "X";
-            this.xDataGridViewTextBoxColumn.HeaderText = "X";
-            this.xDataGridViewTextBoxColumn.Name = "xDataGridViewTextBoxColumn";
-            this.xDataGridViewTextBoxColumn.ReadOnly = true;
+            this._xDataGridViewTextBoxColumn.DataPropertyName = "X";
+            this._xDataGridViewTextBoxColumn.HeaderText = "X";
+            this._xDataGridViewTextBoxColumn.Name = "_xDataGridViewTextBoxColumn";
+            this._xDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // yDataGridViewTextBoxColumn
+            // _yDataGridViewTextBoxColumn
             // 
-            this.yDataGridViewTextBoxColumn.DataPropertyName = "Y";
-            this.yDataGridViewTextBoxColumn.HeaderText = "Y";
-            this.yDataGridViewTextBoxColumn.Name = "yDataGridViewTextBoxColumn";
-            this.yDataGridViewTextBoxColumn.ReadOnly = true;
+            this._yDataGridViewTextBoxColumn.DataPropertyName = "Y";
+            this._yDataGridViewTextBoxColumn.HeaderText = "Y";
+            this._yDataGridViewTextBoxColumn.Name = "_yDataGridViewTextBoxColumn";
+            this._yDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // widthDataGridViewTextBoxColumn
+            // _widthDataGridViewTextBoxColumn
             // 
-            this.widthDataGridViewTextBoxColumn.DataPropertyName = "Width";
-            this.widthDataGridViewTextBoxColumn.HeaderText = "Width";
-            this.widthDataGridViewTextBoxColumn.Name = "widthDataGridViewTextBoxColumn";
-            this.widthDataGridViewTextBoxColumn.ReadOnly = true;
+            this._widthDataGridViewTextBoxColumn.DataPropertyName = "Width";
+            this._widthDataGridViewTextBoxColumn.HeaderText = "Width";
+            this._widthDataGridViewTextBoxColumn.Name = "_widthDataGridViewTextBoxColumn";
+            this._widthDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // heightDataGridViewTextBoxColumn
+            // _heightDataGridViewTextBoxColumn
             // 
-            this.heightDataGridViewTextBoxColumn.DataPropertyName = "Height";
-            this.heightDataGridViewTextBoxColumn.HeaderText = "Height";
-            this.heightDataGridViewTextBoxColumn.Name = "heightDataGridViewTextBoxColumn";
-            this.heightDataGridViewTextBoxColumn.ReadOnly = true;
+            this._heightDataGridViewTextBoxColumn.DataPropertyName = "Height";
+            this._heightDataGridViewTextBoxColumn.HeaderText = "Height";
+            this._heightDataGridViewTextBoxColumn.Name = "_heightDataGridViewTextBoxColumn";
+            this._heightDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // yoloItemBindingSource
+            // _yoloItemBindingSource
             // 
-            this.yoloItemBindingSource.DataSource = typeof(Alturos.Yolo.Model.YoloItem);
+            this._yoloItemBindingSource.DataSource = typeof(Alturos.Yolo.Model.YoloItem);
             // 
-            // pic
+            // _pic
             // 
-            this.pic.BackColor = System.Drawing.Color.White;
-            this.pic.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pic.Location = new System.Drawing.Point(6, 35);
-            this.pic.Name = "pic";
-            this.pic.Size = new System.Drawing.Size(643, 315);
-            this.pic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pic.TabIndex = 1;
-            this.pic.TabStop = false;
+            this._pic.BackColor = System.Drawing.Color.White;
+            this._pic.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this._pic.Location = new System.Drawing.Point(6, 35);
+            this._pic.Name = "_pic";
+            this._pic.Size = new System.Drawing.Size(643, 315);
+            this._pic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this._pic.TabIndex = 1;
+            this._pic.TabStop = false;
             // 
-            // btnOpenFile
+            // _btnOpenFile
             // 
-            this.btnOpenFile.Location = new System.Drawing.Point(6, 6);
-            this.btnOpenFile.Name = "btnOpenFile";
-            this.btnOpenFile.Size = new System.Drawing.Size(75, 23);
-            this.btnOpenFile.TabIndex = 2;
-            this.btnOpenFile.Text = "Открыть";
-            this.btnOpenFile.UseVisualStyleBackColor = true;
-            this.btnOpenFile.Click += new System.EventHandler(this.OpenBtn_Click);
+            this._btnOpenFile.Location = new System.Drawing.Point(6, 6);
+            this._btnOpenFile.Name = "_btnOpenFile";
+            this._btnOpenFile.Size = new System.Drawing.Size(75, 23);
+            this._btnOpenFile.TabIndex = 2;
+            this._btnOpenFile.Text = "Открыть";
+            this._btnOpenFile.UseVisualStyleBackColor = true;
+            this._btnOpenFile.Click += new System.EventHandler(this.OpenBtn_Click);
             // 
-            // btnOpenVideo
+            // _btnOpenVideo
             // 
-            this.btnOpenVideo.FlatAppearance.BorderSize = 0;
-            this.btnOpenVideo.Location = new System.Drawing.Point(6, 7);
-            this.btnOpenVideo.Name = "btnOpenVideo";
-            this.btnOpenVideo.Size = new System.Drawing.Size(75, 23);
-            this.btnOpenVideo.TabIndex = 2;
-            this.btnOpenVideo.Text = "Открыть";
-            this.btnOpenVideo.UseVisualStyleBackColor = true;
-            this.btnOpenVideo.Click += new System.EventHandler(this.BtnOpenVideo_Click);
+            this._btnOpenVideo.FlatAppearance.BorderSize = 0;
+            this._btnOpenVideo.Location = new System.Drawing.Point(6, 7);
+            this._btnOpenVideo.Name = "_btnOpenVideo";
+            this._btnOpenVideo.Size = new System.Drawing.Size(75, 23);
+            this._btnOpenVideo.TabIndex = 2;
+            this._btnOpenVideo.Text = "Открыть";
+            this._btnOpenVideo.UseVisualStyleBackColor = true;
+            this._btnOpenVideo.Click += new System.EventHandler(this.BtnOpenVideo_Click);
             // 
-            // BtnStopVideo
+            // _btnStopVideo
             // 
-            this.BtnStopVideo.FlatAppearance.BorderSize = 0;
-            this.BtnStopVideo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnStopVideo.Image = ((System.Drawing.Image)(resources.GetObject("BtnStopVideo.Image")));
-            this.BtnStopVideo.Location = new System.Drawing.Point(326, 356);
-            this.BtnStopVideo.Name = "BtnStopVideo";
-            this.BtnStopVideo.Size = new System.Drawing.Size(37, 37);
-            this.BtnStopVideo.TabIndex = 5;
-            this.BtnStopVideo.UseVisualStyleBackColor = true;
-            this.BtnStopVideo.Click += new System.EventHandler(this.DetectorOnVideoClosed);
+            this._btnStopVideo.FlatAppearance.BorderSize = 0;
+            this._btnStopVideo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this._btnStopVideo.Image = ((System.Drawing.Image)(resources.GetObject("_btnStopVideo.Image")));
+            this._btnStopVideo.Location = new System.Drawing.Point(326, 356);
+            this._btnStopVideo.Name = "_btnStopVideo";
+            this._btnStopVideo.Size = new System.Drawing.Size(37, 37);
+            this._btnStopVideo.TabIndex = 5;
+            this._btnStopVideo.UseVisualStyleBackColor = true;
+            this._btnStopVideo.Click += new System.EventHandler(this.DetectorOnVideoClosed);
             // 
-            // tabControl1
+            // _tabControl1
             // 
-            this.tabControl1.Controls.Add(this.VideoPg);
-            this.tabControl1.Controls.Add(this.PhotoPg);
-            this.tabControl1.Location = new System.Drawing.Point(0, 0);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(663, 564);
-            this.tabControl1.TabIndex = 6;
+            this._tabControl1.Controls.Add(this._videoPg);
+            this._tabControl1.Controls.Add(this._photoPg);
+            this._tabControl1.Location = new System.Drawing.Point(0, 0);
+            this._tabControl1.Name = "_tabControl1";
+            this._tabControl1.SelectedIndex = 0;
+            this._tabControl1.Size = new System.Drawing.Size(663, 564);
+            this._tabControl1.TabIndex = 6;
             // 
-            // VideoPg
+            // _videoPg
             // 
-            this.VideoPg.Controls.Add(this.CouplingCounterLabel);
-            this.VideoPg.Controls.Add(this.label1);
-            this.VideoPg.Controls.Add(this.OpenVideoTxtBx);
-            this.VideoPg.Controls.Add(this.LogTxtBx);
-            this.VideoPg.Controls.Add(this.pic);
-            this.VideoPg.Controls.Add(this._playBtn);
-            this.VideoPg.Controls.Add(this.BtnStopVideo);
-            this.VideoPg.Controls.Add(this.btnOpenVideo);
-            this.VideoPg.Location = new System.Drawing.Point(4, 22);
-            this.VideoPg.Name = "VideoPg";
-            this.VideoPg.Padding = new System.Windows.Forms.Padding(3);
-            this.VideoPg.Size = new System.Drawing.Size(655, 538);
-            this.VideoPg.TabIndex = 0;
-            this.VideoPg.Text = "Видео";
-            this.VideoPg.UseVisualStyleBackColor = true;
+            this._videoPg.Controls.Add(this._couplingCounterLabel);
+            this._videoPg.Controls.Add(this._label1);
+            this._videoPg.Controls.Add(this._openVideoTxtBx);
+            this._videoPg.Controls.Add(this._logTxtBx);
+            this._videoPg.Controls.Add(this._pic);
+            this._videoPg.Controls.Add(this._playBtn);
+            this._videoPg.Controls.Add(this._btnStopVideo);
+            this._videoPg.Controls.Add(this._btnOpenVideo);
+            this._videoPg.Location = new System.Drawing.Point(4, 22);
+            this._videoPg.Name = "_videoPg";
+            this._videoPg.Padding = new System.Windows.Forms.Padding(3);
+            this._videoPg.Size = new System.Drawing.Size(655, 538);
+            this._videoPg.TabIndex = 0;
+            this._videoPg.Text = "Видео";
+            this._videoPg.UseVisualStyleBackColor = true;
             // 
-            // CouplingCounterLabel
+            // _couplingCounterLabel
             // 
-            this.CouplingCounterLabel.AutoSize = true;
-            this.CouplingCounterLabel.Location = new System.Drawing.Point(615, 368);
-            this.CouplingCounterLabel.Name = "CouplingCounterLabel";
-            this.CouplingCounterLabel.Size = new System.Drawing.Size(13, 13);
-            this.CouplingCounterLabel.TabIndex = 9;
-            this.CouplingCounterLabel.Text = "0";
+            this._couplingCounterLabel.AutoSize = true;
+            this._couplingCounterLabel.Location = new System.Drawing.Point(615, 368);
+            this._couplingCounterLabel.Name = "_couplingCounterLabel";
+            this._couplingCounterLabel.Size = new System.Drawing.Size(13, 13);
+            this._couplingCounterLabel.TabIndex = 9;
+            this._couplingCounterLabel.Text = "0";
             // 
-            // label1
+            // _label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(497, 368);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(112, 13);
-            this.label1.TabIndex = 8;
-            this.label1.Text = "Обнаружено сцепок:";
+            this._label1.AutoSize = true;
+            this._label1.Location = new System.Drawing.Point(497, 368);
+            this._label1.Name = "_label1";
+            this._label1.Size = new System.Drawing.Size(112, 13);
+            this._label1.TabIndex = 8;
+            this._label1.Text = "Обнаружено сцепок:";
             // 
-            // OpenVideoTxtBx
+            // _openVideoTxtBx
             // 
-            this.OpenVideoTxtBx.Location = new System.Drawing.Point(87, 7);
-            this.OpenVideoTxtBx.Name = "OpenVideoTxtBx";
-            this.OpenVideoTxtBx.Size = new System.Drawing.Size(562, 22);
-            this.OpenVideoTxtBx.TabIndex = 7;
-            this.OpenVideoTxtBx.Text = "";
+            this._openVideoTxtBx.Location = new System.Drawing.Point(87, 7);
+            this._openVideoTxtBx.Name = "_openVideoTxtBx";
+            this._openVideoTxtBx.Size = new System.Drawing.Size(562, 22);
+            this._openVideoTxtBx.TabIndex = 7;
+            this._openVideoTxtBx.Text = "";
             // 
-            // LogTxtBx
+            // _logTxtBx
             // 
-            this.LogTxtBx.Location = new System.Drawing.Point(6, 399);
-            this.LogTxtBx.Name = "LogTxtBx";
-            this.LogTxtBx.Size = new System.Drawing.Size(643, 129);
-            this.LogTxtBx.TabIndex = 6;
-            this.LogTxtBx.Text = "";
+            this._logTxtBx.Location = new System.Drawing.Point(6, 399);
+            this._logTxtBx.Name = "_logTxtBx";
+            this._logTxtBx.Size = new System.Drawing.Size(643, 129);
+            this._logTxtBx.TabIndex = 6;
+            this._logTxtBx.Text = "";
             // 
             // _playBtn
             // 
@@ -254,63 +254,63 @@
             this._playBtn.UseVisualStyleBackColor = true;
             this._playBtn.Click += new System.EventHandler(this.PlayBtn_Click);
             // 
-            // PhotoPg
+            // _photoPg
             // 
-            this.PhotoPg.Controls.Add(this.OpenFolderPhotoTxtBx);
-            this.PhotoPg.Controls.Add(this.BtnOpenFolder);
-            this.PhotoPg.Controls.Add(this.OpenPhotoTxtBx);
-            this.PhotoPg.Controls.Add(this.picBx);
-            this.PhotoPg.Controls.Add(this.dataGridViewResult);
-            this.PhotoPg.Controls.Add(this.btnOpenFile);
-            this.PhotoPg.Location = new System.Drawing.Point(4, 22);
-            this.PhotoPg.Name = "PhotoPg";
-            this.PhotoPg.Padding = new System.Windows.Forms.Padding(3);
-            this.PhotoPg.Size = new System.Drawing.Size(655, 538);
-            this.PhotoPg.TabIndex = 1;
-            this.PhotoPg.Text = "Фото";
-            this.PhotoPg.UseVisualStyleBackColor = true;
+            this._photoPg.Controls.Add(this._openFolderPhotoTxtBx);
+            this._photoPg.Controls.Add(this._btnOpenFolder);
+            this._photoPg.Controls.Add(this._openPhotoTxtBx);
+            this._photoPg.Controls.Add(this._picBx);
+            this._photoPg.Controls.Add(this._dataGridViewResult);
+            this._photoPg.Controls.Add(this._btnOpenFile);
+            this._photoPg.Location = new System.Drawing.Point(4, 22);
+            this._photoPg.Name = "_photoPg";
+            this._photoPg.Padding = new System.Windows.Forms.Padding(3);
+            this._photoPg.Size = new System.Drawing.Size(655, 538);
+            this._photoPg.TabIndex = 1;
+            this._photoPg.Text = "Фото";
+            this._photoPg.UseVisualStyleBackColor = true;
             // 
-            // OpenFolderPhotoTxtBx
+            // _openFolderPhotoTxtBx
             // 
-            this.OpenFolderPhotoTxtBx.Location = new System.Drawing.Point(125, 510);
-            this.OpenFolderPhotoTxtBx.Name = "OpenFolderPhotoTxtBx";
-            this.OpenFolderPhotoTxtBx.Size = new System.Drawing.Size(524, 22);
-            this.OpenFolderPhotoTxtBx.TabIndex = 10;
-            this.OpenFolderPhotoTxtBx.Text = "";
+            this._openFolderPhotoTxtBx.Location = new System.Drawing.Point(125, 510);
+            this._openFolderPhotoTxtBx.Name = "_openFolderPhotoTxtBx";
+            this._openFolderPhotoTxtBx.Size = new System.Drawing.Size(524, 22);
+            this._openFolderPhotoTxtBx.TabIndex = 10;
+            this._openFolderPhotoTxtBx.Text = "";
             // 
-            // BtnOpenFolder
+            // _btnOpenFolder
             // 
-            this.BtnOpenFolder.Location = new System.Drawing.Point(6, 509);
-            this.BtnOpenFolder.Name = "BtnOpenFolder";
-            this.BtnOpenFolder.Size = new System.Drawing.Size(113, 23);
-            this.BtnOpenFolder.TabIndex = 9;
-            this.BtnOpenFolder.Text = "Открыть папку";
-            this.BtnOpenFolder.UseVisualStyleBackColor = true;
-            this.BtnOpenFolder.Click += new System.EventHandler(this.BtnOpenFolder_Click);
+            this._btnOpenFolder.Location = new System.Drawing.Point(6, 509);
+            this._btnOpenFolder.Name = "_btnOpenFolder";
+            this._btnOpenFolder.Size = new System.Drawing.Size(113, 23);
+            this._btnOpenFolder.TabIndex = 9;
+            this._btnOpenFolder.Text = "Открыть папку";
+            this._btnOpenFolder.UseVisualStyleBackColor = true;
+            this._btnOpenFolder.Click += new System.EventHandler(this.BtnOpenFolder_Click);
             // 
-            // OpenPhotoTxtBx
+            // _openPhotoTxtBx
             // 
-            this.OpenPhotoTxtBx.Location = new System.Drawing.Point(87, 6);
-            this.OpenPhotoTxtBx.Name = "OpenPhotoTxtBx";
-            this.OpenPhotoTxtBx.Size = new System.Drawing.Size(562, 22);
-            this.OpenPhotoTxtBx.TabIndex = 8;
-            this.OpenPhotoTxtBx.Text = "";
+            this._openPhotoTxtBx.Location = new System.Drawing.Point(87, 6);
+            this._openPhotoTxtBx.Name = "_openPhotoTxtBx";
+            this._openPhotoTxtBx.Size = new System.Drawing.Size(562, 22);
+            this._openPhotoTxtBx.TabIndex = 8;
+            this._openPhotoTxtBx.Text = "";
             // 
-            // picBx
+            // _picBx
             // 
-            this.picBx.BackColor = System.Drawing.Color.White;
-            this.picBx.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.picBx.Location = new System.Drawing.Point(6, 35);
-            this.picBx.Name = "picBx";
-            this.picBx.Size = new System.Drawing.Size(643, 419);
-            this.picBx.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picBx.TabIndex = 3;
-            this.picBx.TabStop = false;
+            this._picBx.BackColor = System.Drawing.Color.White;
+            this._picBx.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this._picBx.Location = new System.Drawing.Point(6, 35);
+            this._picBx.Name = "_picBx";
+            this._picBx.Size = new System.Drawing.Size(643, 419);
+            this._picBx.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this._picBx.TabIndex = 3;
+            this._picBx.TabStop = false;
             // 
-            // toolStripStatusLabelYoloInfo
+            // _toolStripStatusLabelYoloInfo
             // 
-            this.toolStripStatusLabelYoloInfo.Name = "toolStripStatusLabelYoloInfo";
-            this.toolStripStatusLabelYoloInfo.Size = new System.Drawing.Size(0, 17);
+            this._toolStripStatusLabelYoloInfo.Name = "_toolStripStatusLabelYoloInfo";
+            this._toolStripStatusLabelYoloInfo.Size = new System.Drawing.Size(0, 17);
             // 
             // _progressBar
             // 
@@ -319,39 +319,39 @@
             this._progressBar.Name = "_progressBar";
             this._progressBar.Size = new System.Drawing.Size(100, 16);
             // 
-            // StatusStrip
+            // _statusStrip
             // 
-            this.StatusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripStatusLabelYoloInfo,
+            this._statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this._toolStripStatusLabelYoloInfo,
             this._progressBar});
-            this.StatusStrip.Location = new System.Drawing.Point(0, 560);
-            this.StatusStrip.Name = "StatusStrip";
-            this.StatusStrip.Size = new System.Drawing.Size(661, 22);
-            this.StatusStrip.TabIndex = 3;
+            this._statusStrip.Location = new System.Drawing.Point(0, 560);
+            this._statusStrip.Name = "_statusStrip";
+            this._statusStrip.Size = new System.Drawing.Size(661, 22);
+            this._statusStrip.TabIndex = 3;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(661, 582);
-            this.Controls.Add(this.tabControl1);
-            this.Controls.Add(this.StatusStrip);
+            this.Controls.Add(this._tabControl1);
+            this.Controls.Add(this._statusStrip);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MinimizeBox = false;
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Coupling CHSU";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewResult)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.yoloItemBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pic)).EndInit();
-            this.tabControl1.ResumeLayout(false);
-            this.VideoPg.ResumeLayout(false);
-            this.VideoPg.PerformLayout();
-            this.PhotoPg.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.picBx)).EndInit();
-            this.StatusStrip.ResumeLayout(false);
-            this.StatusStrip.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this._dataGridViewResult)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this._yoloItemBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this._pic)).EndInit();
+            this._tabControl1.ResumeLayout(false);
+            this._videoPg.ResumeLayout(false);
+            this._videoPg.PerformLayout();
+            this._photoPg.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this._picBx)).EndInit();
+            this._statusStrip.ResumeLayout(false);
+            this._statusStrip.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -359,33 +359,33 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridViewResult;
-        private System.Windows.Forms.PictureBox pic;
-        private System.Windows.Forms.Button btnOpenFile;
-        private System.Windows.Forms.BindingSource yoloItemBindingSource;
-        private System.Windows.Forms.DataGridViewTextBoxColumn typeDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn confidenceDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn xDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn yDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn widthDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn heightDataGridViewTextBoxColumn;
-        private System.Windows.Forms.Button btnOpenVideo;
-		private System.Windows.Forms.Button BtnStopVideo;
-		private System.Windows.Forms.TabControl tabControl1;
-		private System.Windows.Forms.TabPage VideoPg;
-		private System.Windows.Forms.TabPage PhotoPg;
-        private System.Windows.Forms.PictureBox picBx;
-        private System.Windows.Forms.RichTextBox OpenVideoTxtBx;
-        private System.Windows.Forms.RichTextBox LogTxtBx;
+        private System.Windows.Forms.DataGridView _dataGridViewResult;
+        private System.Windows.Forms.PictureBox _pic;
+        private System.Windows.Forms.Button _btnOpenFile;
+        private System.Windows.Forms.BindingSource _yoloItemBindingSource;
+        private System.Windows.Forms.DataGridViewTextBoxColumn _typeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn _confidenceDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn _xDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn _yDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn _widthDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn _heightDataGridViewTextBoxColumn;
+        private System.Windows.Forms.Button _btnOpenVideo;
+		private System.Windows.Forms.Button _btnStopVideo;
+		private System.Windows.Forms.TabControl _tabControl1;
+		private System.Windows.Forms.TabPage _videoPg;
+		private System.Windows.Forms.TabPage _photoPg;
+        private System.Windows.Forms.PictureBox _picBx;
+        private System.Windows.Forms.RichTextBox _openVideoTxtBx;
+        private System.Windows.Forms.RichTextBox _logTxtBx;
         private System.Windows.Forms.Button _playBtn;
-        private System.Windows.Forms.Label CouplingCounterLabel;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button BtnOpenFolder;
-        private System.Windows.Forms.RichTextBox OpenFolderPhotoTxtBx;
-        private System.Windows.Forms.RichTextBox OpenPhotoTxtBx;
-		private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelYoloInfo;
+        private System.Windows.Forms.Label _couplingCounterLabel;
+        private System.Windows.Forms.Label _label1;
+        private System.Windows.Forms.Button _btnOpenFolder;
+        private System.Windows.Forms.RichTextBox _openFolderPhotoTxtBx;
+        private System.Windows.Forms.RichTextBox _openPhotoTxtBx;
+		private System.Windows.Forms.ToolStripStatusLabel _toolStripStatusLabelYoloInfo;
 		private System.Windows.Forms.ToolStripProgressBar _progressBar;
-		private System.Windows.Forms.StatusStrip StatusStrip;
+		private System.Windows.Forms.StatusStrip _statusStrip;
 	}
 }
 

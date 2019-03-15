@@ -57,21 +57,20 @@ namespace CouplingAlturos
             Logger = logger;
             InitializeComponent();
 			Detector.VideoClosed += DetectorOnVideoClosed;
-            toolStripStatusLabelYoloInfo.Text = $@"Detection system: {Detector.YoloMetaInfo.DetectionSystem}";
+            _toolStripStatusLabelYoloInfo.Text = $@"Detection system: {Detector.YoloMetaInfo.DetectionSystem}";
         }
 
 		private void Form1_FormClosing(object sender, FormClosingEventArgs e)
 		{
+			Detector.VideoClosed -= DetectorOnVideoClosed;
             Detector.Stop();
+			//todo: что ниже удалить, если юзер закрыл не дожидаясь завершения то ему не нужен лог
             if (_videoRecognitionResults != null)
 			{
                 
 				Logger.Save($"{DateTime.Now:dd/MM/yy HH-mm-ss}");
                 Logger.Clear();
 			}
-            
-
-			Detector.VideoClosed -= DetectorOnVideoClosed;
 		}
 
 		#endregion
@@ -86,14 +85,13 @@ namespace CouplingAlturos
                 Logger.Save($@"{DateTime.Now:dd/MM/yy HH-mm-ss}");
                 Logger.Clear();
             }
-
+			//todo: это так?
             _playBtn.SetPropertyThreadSafe(() => _playBtn.Enabled, true);
-            pic.Invoke(new Action(() => { pic.Image = null; }));
-            
+            _pic.SetPropertyThreadSafe(() => _pic.Image, null);
+	        _statusStrip.SetPropertyThreadSafe(() => _progressBar.Value, 100);
+		}
 
-        }
-
-        private void OpenBtn_Click(object sender, EventArgs e)
+		private void OpenBtn_Click(object sender, EventArgs e)
 		{ 
 			using (var ofd = new OpenFileDialog()
 			{
@@ -107,9 +105,9 @@ namespace CouplingAlturos
 
 					var result = Detector.ProcessImage(Image.FromFile(image));
 
-					dataGridViewResult.DataSource = result.Items;
-					picBx.Image = result.AppendBorder();
-					OpenPhotoTxtBx.Text = ofd.FileName;
+					_dataGridViewResult.DataSource = result.Items;
+					_picBx.Image = result.AppendBorder();
+					_openPhotoTxtBx.Text = ofd.FileName;
 
 					result.SaveToJson(@"Results", ofd.SafeFileName);
 				}
@@ -126,10 +124,10 @@ namespace CouplingAlturos
             {
                 if (ofd.ShowDialog(this) == DialogResult.OK)
                 {
-                    pic.Image = null;
-                    OpenVideoTxtBx.Text = ofd.FileName;
+                    _pic.Image = null;
+                    _openVideoTxtBx.Text = ofd.FileName;
                     _videoFile = ofd.FileName;
-                    pic.BackColor = Color.Black;
+                    _pic.BackColor = Color.Black;
                     _playBtn.Enabled = true;
                     
                 }
@@ -155,7 +153,7 @@ namespace CouplingAlturos
 				{
                     
 					var path = new DirectoryInfo(folderDialog.SelectedPath);
-                    OpenFolderPhotoTxtBx.Text = path.ToString();
+                    _openFolderPhotoTxtBx.Text = path.ToString();
                     var allFiles = path.GetFiles("*.*");
 
                     var images = allFiles.Where(file => Regex.IsMatch(file.Name, @".jpg|.png|.jpeg|.bmp$"))
@@ -185,7 +183,7 @@ namespace CouplingAlturos
         {
 
             _incrementValue = (int)(_progressBar.Maximum / result.TotalFrames);
-            pic.Image = result.ImageBytes.ToImage();
+            _pic.Image = result.ImageBytes.ToImage();
             _videoRecognitionResults.Items.Add(result);
             _progressBar.Increment(_incrementValue);
             if (_videoRecognitionResults.Items.Count > Constants.FrameLimit)
@@ -193,11 +191,11 @@ namespace CouplingAlturos
                 var validator = new FramesValidator(_videoRecognitionResults.Items);
                 if (validator.IsValid)
                 {
-                    pic.Image = result.AppendBorder();
+                    _pic.Image = result.AppendBorder();
                     if (result.IndexFrame - _videoRecognitionResults.LastFrame > Constants.FrameDifference)
                     {
                         _videoRecognitionResults.Counter++;
-                        CouplingCounterLabel.Text = _videoRecognitionResults.Counter.ToString();
+                        _couplingCounterLabel.Text = _videoRecognitionResults.Counter.ToString();
                         foreach (var item in result.Items)
                         {
                             LogMsg(item, result);
@@ -219,7 +217,7 @@ namespace CouplingAlturos
             msg.AppendLine("Ширина: " + item.Width);
             msg.AppendLine("Высота: " + item.Height);
             Logger.WriteLine(msg.ToString());
-            LogTxtBx.AppendText(Logger.Messages.Last() + "\r\n");
+            _logTxtBx.AppendText(Logger.Messages.Last() + "\r\n");
         }
 
         #endregion
