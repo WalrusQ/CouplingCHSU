@@ -27,12 +27,9 @@ namespace CouplingAlturos.Core
 			};
 		}
 
-		/// <summary>
-		/// Обрабатывает изображения. Только для тестов. 
-		/// </summary>
 		public void ProcessImages(IEnumerable<Image> images, IProgress<ImageRecognitionResult> progress)
 		{
-
+			Stop();
 			if(_thread != null)
 			{
 				try

@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using CouplingAlturos.Core;
 using CouplingAlturos.Core.Models;
 
-namespace CouplingAlturos.Core
+namespace CouplingAlturos.Abstractions
 {
 	public interface IDetector
 	{
@@ -20,7 +21,8 @@ namespace CouplingAlturos.Core
 		void ProcessImages(IEnumerable<Image> images, IProgress<ImageRecognitionResult> progress);
 
 		/// <summary> Создает поток для распознавания сцепок из видеофайла </summary>
-		void ProcessVideo(string filename, IProgress<VideoRecognitionResult> progress);
+		void ProcessVideo(string filename, IProgress<VideoRecognitionResult> progress, Detector.VideoDecoderType decoderType);
+
 		/// <summary> Событие при закрытии видеофайла </summary>
 		event EventHandler VideoClosed;
 	}

@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.Threading;
 using Alturos.Yolo;
+using CouplingAlturos.Abstractions;
 using CouplingAlturos.Core.Models;
 
 namespace CouplingAlturos.Core
@@ -47,6 +48,8 @@ namespace CouplingAlturos.Core
 			{
 				_cancellationTokenSource.Cancel();
 			}
+
+			_fileVideoSource?.Stop();
 		}
 
 		private void OnVideoClosed()

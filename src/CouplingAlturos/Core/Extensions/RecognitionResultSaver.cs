@@ -64,8 +64,6 @@ namespace CouplingAlturos.Core.Extensions
 
 				Save(path, imageName, index++, jsonObject);
 			}
-
-			
 		}
 
 		private static void Save(string path, string imageName, int counter, RecognitionResultJsonObject @object)

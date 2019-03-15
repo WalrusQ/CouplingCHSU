@@ -7,7 +7,6 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using CouplingAlturos.Abstractions;
-using CouplingAlturos.Core;
 using CouplingAlturos.Core.Converters;
 using CouplingAlturos.Core.Models;
 using System.Text;
@@ -144,8 +143,39 @@ namespace CouplingAlturos
 			_videoRecognitionResults = new VideoRecognitionResults();
             var progress = new Progress<VideoRecognitionResult>(OnImageDetected);
     
-            Detector.ProcessVideo(_videoFile, progress);
+            Detector.ProcessVideo(_videoFile, progress, Core.Detector.VideoDecoderType.DirectShow);
         }
+
+		private void OnImageDetected(VideoRecognitionResult result)
+		{
+			if (IsDisposed) return;
+
+			_incrementValue = (int)(_progressBar.Maximum / result.TotalFrames);
+			_pic.Image = result.ImageBytes.ToImage();
+			_videoRecognitionResults.Items.Add(result);
+			_progressBar.Increment(_incrementValue);
+
+			if (_videoRecognitionResults.Items.Count > Constants.FrameLimit)
+			{
+				var validator = new FramesValidator(_videoRecognitionResults.Items);
+				if (validator.IsValid)
+				{
+					_pic.Image = result.AppendBorder();
+					if (result.IndexFrame - _videoRecognitionResults.LastFrame > Constants.FrameDifference)
+					{
+						_videoRecognitionResults.Counter++;
+						_couplingCounterLabel.Text = _videoRecognitionResults.Counter.ToString();
+						foreach (var item in result.Items)
+						{
+							LogMsg(item, result);
+						}
+					}
+					_videoRecognitionResults.LastFrame = result.IndexFrame;
+
+				}
+				_videoRecognitionResults.Items.RemoveAt(0);
+			}
+		}
 
 		private void BtnOpenFolder_Click(object sender, EventArgs e)
 		{
@@ -180,35 +210,6 @@ namespace CouplingAlturos
         {
             result.SaveToJson(Constants.ResultFolder, result.ImageName);
             _progressBar.Increment(_incrementValue);
-        }
-
-        private void OnImageDetected(VideoRecognitionResult result)
-        {
-            if (IsDisposed) return;
-            _incrementValue = (int)(_progressBar.Maximum / result.TotalFrames);
-            _pic.Image = result.ImageBytes.ToImage();
-            _videoRecognitionResults.Items.Add(result);
-            _progressBar.Increment(_incrementValue);
-            if (_videoRecognitionResults.Items.Count > Constants.FrameLimit)
-            {
-                var validator = new FramesValidator(_videoRecognitionResults.Items);
-                if (validator.IsValid)
-                {
-                    _pic.Image = result.AppendBorder();
-                    if (result.IndexFrame - _videoRecognitionResults.LastFrame > Constants.FrameDifference)
-                    {
-                        _videoRecognitionResults.Counter++;
-                        _couplingCounterLabel.Text = _videoRecognitionResults.Counter.ToString();
-                        foreach (var item in result.Items)
-                        {
-                            LogMsg(item, result);
-                        }
-                    }
-                    _videoRecognitionResults.LastFrame = result.IndexFrame;
-
-                }
-                _videoRecognitionResults.Items.RemoveAt(0);
-            }
         }
 
         private void LogMsg(YoloItem item, VideoRecognitionResult result)

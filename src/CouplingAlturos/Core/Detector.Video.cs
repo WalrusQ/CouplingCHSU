@@ -1,70 +1,74 @@
 ﻿using System;
-using System.Threading;
-using Accord.Video.FFMPEG;
+using System.Drawing;
+using System.Linq;
+using Accord.Video;
 using CouplingAlturos.Core.Models;
 
 namespace CouplingAlturos.Core
 {
-    partial class Detector
-    {
-	    private void ProcThread(string filename, IProgress<VideoRecognitionResult> progress)
-	    {
-		    using (var reader = new VideoFileReader())
-		    {
-			    reader.Open(filename);
-			    var indexFrame = 0;
+	partial class Detector
+	{
+		private int _indexFrame;
 
-			    while (reader.FrameCount - 2 > indexFrame && !_cancellationTokenSource.IsCancellationRequested)
-			    {
+		private IVideoSource _fileVideoSource;
 
-				    var frame = reader.ReadVideoFrame();
-                    if (frame == null) break; 
-                    var result = ProcessImage(frame);
-
-				    var report = new VideoRecognitionResult()
-				    {
-					    ElapsedTime = result.ElapsedTime,
-					    FrameRate = reader.FrameRate.Numerator,
-					    ImageBytes = result.ImageBytes,
-					    IndexFrame = ++indexFrame,
-					    Items = result.Items,
-                        TotalFrames = reader.FrameCount
-                        
-				    };
-
-				    progress.Report(report); //todo: Вместо progress сделать event
-
-				    frame.Dispose();
-				    if (_cancellationTokenSource.IsCancellationRequested) break;
-			    }
-
-			    reader.Close();
-			    OnVideoClosed();
-		    }
+		public enum VideoDecoderType
+		{
+			DirectShow,
+			// ReSharper disable once InconsistentNaming
+			FFMpeg,
 		}
 
-		public void ProcessVideo(string filename, IProgress<VideoRecognitionResult> progress)
-	    {
-		    if (_thread != null)
-		    {
-			    try
-			    {
-				    if (_thread.IsAlive)
-				    {
-					    _thread.Join(100);
-					    if (_thread.IsAlive) _thread.Abort();
-				    }
-			    }
-			    finally
-			    {
-				    _thread = null;
-			    }
-		    }
+		public void ProcessVideo(string filename, IProgress<VideoRecognitionResult> progress, VideoDecoderType decoderType)
+		{
+			if(decoderType == VideoDecoderType.DirectShow)
+			{
+				_fileVideoSource = new Accord.Video.DirectShow.FileVideoSource(filename);
 
-		    _cancellationTokenSource?.Dispose();
-			_cancellationTokenSource = new CancellationTokenSource();
-			_thread = new Thread(x => ProcThread(filename, progress));
-			_thread.Start();
+			}
+			else if(decoderType == VideoDecoderType.FFMpeg)
+			{
+				_fileVideoSource = new Accord.Video.FFMPEG.VideoFileSource(filename);
+			}
+			else return;
+
+			var framesCount = GetFramesCount(filename);
+			_indexFrame = 0;
+
+			_fileVideoSource.NewFrame += (sender, args) => progress.Report(PrepareReport(args.Frame, _indexFrame++, Convert.ToInt32(framesCount)));
+			_fileVideoSource.PlayingFinished += (s, a) => OnVideoClosed();
+			_fileVideoSource.Start();
 		}
-    }
+
+		private VideoRecognitionResult PrepareReport(Image image, int frameIndex, int framesCount)
+		{
+			if(image == null) return null;
+			var result = ProcessImage(image);
+
+			var report = new VideoRecognitionResult()
+			{
+				ElapsedTime = result.ElapsedTime,
+				ImageBytes = result.ImageBytes,
+				IndexFrame = frameIndex,
+				Items = result.Items,
+				TotalFrames = framesCount
+			};
+
+			return report;
+		}
+
+		private double GetFramesCount(string filename)
+		{
+			var ffProbe = new NReco.VideoInfo.FFProbe();
+			var vInfo = ffProbe.GetMediaInfo(filename);
+			var streamInfo = vInfo.Streams.FirstOrDefault(x => x.CodecType.ToLower() == "video");
+			var framesCount = 0d;
+			if (streamInfo != null)
+			{
+				framesCount = streamInfo.FrameRate * vInfo.Duration.TotalSeconds;
+			}
+
+			return framesCount;
+		}
+	}
 }
