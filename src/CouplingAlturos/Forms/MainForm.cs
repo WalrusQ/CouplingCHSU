@@ -65,8 +65,7 @@ namespace CouplingAlturos
             Detector.Stop();
             Detector.VideoClosed -= DetectorOnVideoClosed;
             
-			//todo: что ниже удалить, если юзер закрыл не дожидаясь завершения то ему не нужен лог
-            if (_videoRecognitionResults != null)
+            if (Logger.Messages.Any())
 			{
                 
 				Logger.Save($"{DateTime.Now:dd/MM/yy HH-mm-ss}");
