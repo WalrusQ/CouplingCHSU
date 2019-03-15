@@ -62,8 +62,9 @@ namespace CouplingAlturos
 
 		private void Form1_FormClosing(object sender, FormClosingEventArgs e)
 		{
-			Detector.VideoClosed -= DetectorOnVideoClosed;
             Detector.Stop();
+            Detector.VideoClosed -= DetectorOnVideoClosed;
+            
 			//todo: что ниже удалить, если юзер закрыл не дожидаясь завершения то ему не нужен лог
             if (_videoRecognitionResults != null)
 			{
@@ -85,10 +86,12 @@ namespace CouplingAlturos
                 Logger.Save($@"{DateTime.Now:dd/MM/yy HH-mm-ss}");
                 Logger.Clear();
             }
-			//todo: это так?
+			
             _playBtn.SetPropertyThreadSafe(() => _playBtn.Enabled, true);
-            _pic.SetPropertyThreadSafe(() => _pic.Image, null);
-	        _statusStrip.SetPropertyThreadSafe(() => _progressBar.Value, 100);
+
+            _pic.Invoke(new Action(() => { _pic.Image = null; }));
+            _statusStrip.Invoke(new Action(() => { _progressBar.Value = _progressBar.Maximum; }));
+           
 		}
 
 		private void OpenBtn_Click(object sender, EventArgs e)
@@ -136,6 +139,7 @@ namespace CouplingAlturos
 
 		private void PlayBtn_Click(object sender, EventArgs e)
 		{
+            _couplingCounterLabel.Text = "0";
             _progressBar.Value = 0;
             _playBtn.Enabled = false;
 			_videoRecognitionResults = new VideoRecognitionResults();
@@ -181,7 +185,7 @@ namespace CouplingAlturos
 
         private void OnImageDetected(VideoRecognitionResult result)
         {
-
+            if (IsDisposed) return;
             _incrementValue = (int)(_progressBar.Maximum / result.TotalFrames);
             _pic.Image = result.ImageBytes.ToImage();
             _videoRecognitionResults.Items.Add(result);
