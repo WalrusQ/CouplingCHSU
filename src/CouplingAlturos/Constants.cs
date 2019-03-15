@@ -12,9 +12,9 @@
 
 		public static string TeamName = "team6";
 
-		public static int FrameLimit = 15;
+		public static int FrameLimit = 10;
 
-		public static int FrameDifference = 13;
+		public static int FrameDifference = 8;
 
 	}
 }

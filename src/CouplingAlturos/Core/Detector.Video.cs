@@ -14,10 +14,12 @@ namespace CouplingAlturos.Core
 			    reader.Open(filename);
 			    var indexFrame = 0;
 
-			    while (reader.FrameCount - 1 > indexFrame && !_cancellationTokenSource.IsCancellationRequested)
+			    while (reader.FrameCount - 2 > indexFrame && !_cancellationTokenSource.IsCancellationRequested)
 			    {
+
 				    var frame = reader.ReadVideoFrame();
-				    var result = ProcessImage(frame);
+                    if (frame == null) break; 
+                    var result = ProcessImage(frame);
 
 				    var report = new VideoRecognitionResult()
 				    {

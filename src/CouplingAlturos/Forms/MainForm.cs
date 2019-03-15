@@ -62,10 +62,14 @@ namespace CouplingAlturos
 
 		private void Form1_FormClosing(object sender, FormClosingEventArgs e)
 		{
-			if (_videoRecognitionResults != null)
+            Detector.Stop();
+            if (_videoRecognitionResults != null)
 			{
+                
 				Logger.Save($"{DateTime.Now:dd/MM/yy HH-mm-ss}");
+                Logger.Clear();
 			}
+            
 
 			Detector.VideoClosed -= DetectorOnVideoClosed;
 		}
@@ -84,6 +88,9 @@ namespace CouplingAlturos
             }
 
             _playBtn.SetPropertyThreadSafe(() => _playBtn.Enabled, true);
+            pic.Invoke(new Action(() => { pic.Image = null; }));
+            
+
         }
 
         private void OpenBtn_Click(object sender, EventArgs e)
@@ -119,6 +126,7 @@ namespace CouplingAlturos
             {
                 if (ofd.ShowDialog(this) == DialogResult.OK)
                 {
+                    pic.Image = null;
                     OpenVideoTxtBx.Text = ofd.FileName;
                     _videoFile = ofd.FileName;
                     pic.BackColor = Color.Black;

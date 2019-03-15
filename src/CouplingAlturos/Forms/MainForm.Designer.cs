@@ -318,7 +318,6 @@
             this._progressBar.Maximum = 20000;
             this._progressBar.Name = "_progressBar";
             this._progressBar.Size = new System.Drawing.Size(100, 16);
-            this._progressBar.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
             // 
             // StatusStrip
             // 
