@@ -25,6 +25,9 @@ namespace CouplingAlturos
                 .AsSelf();
 
             var container = builder.Build();
+            var container2 = builder.Build();
+            var container3 = builder.Build();
+            var container4 = builder.Build();
 
             return container;
         }
