@@ -24,6 +24,20 @@ namespace CouplingAlturos
                 .RegisterType<MainForm>()
                 .AsSelf();
 
+            builder
+                .RegisterType<MainForm>()
+                .AsSelf(); builder
+                .RegisterType<MainForm>()
+                .AsSelf(); builder
+                .RegisterType<MainForm>()
+                .AsSelf(); builder
+                .RegisterType<MainForm>()
+                .AsSelf(); builder
+                .RegisterType<MainForm>()
+                .AsSelf(); builder
+                .RegisterType<MainForm>()
+                .AsSelf();
+
             var container = builder.Build();
 
             return container;
