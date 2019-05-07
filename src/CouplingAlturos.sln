@@ -1,9 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.421
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28822.285
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CouplingAlturos", "CouplingAlturos\CouplingAlturos.csproj", "{F2CDE654-492B-483D-AA19-464454933E66}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Coupling.Framework", "Coupling.Framework\Coupling.Framework.csproj", "{75739B7E-E85D-41D0-9B2C-2CE19F491291}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Coupling.Core", "Coupling.Core\Coupling.Core.csproj", "{56086FCB-CB19-4947-B111-14E0D9DA773F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +25,22 @@ Global
 		{F2CDE654-492B-483D-AA19-464454933E66}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F2CDE654-492B-483D-AA19-464454933E66}.Release|x64.ActiveCfg = Release|x64
 		{F2CDE654-492B-483D-AA19-464454933E66}.Release|x64.Build.0 = Release|x64
+		{75739B7E-E85D-41D0-9B2C-2CE19F491291}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{75739B7E-E85D-41D0-9B2C-2CE19F491291}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{75739B7E-E85D-41D0-9B2C-2CE19F491291}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{75739B7E-E85D-41D0-9B2C-2CE19F491291}.Debug|x64.Build.0 = Debug|Any CPU
+		{75739B7E-E85D-41D0-9B2C-2CE19F491291}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{75739B7E-E85D-41D0-9B2C-2CE19F491291}.Release|Any CPU.Build.0 = Release|Any CPU
+		{75739B7E-E85D-41D0-9B2C-2CE19F491291}.Release|x64.ActiveCfg = Release|Any CPU
+		{75739B7E-E85D-41D0-9B2C-2CE19F491291}.Release|x64.Build.0 = Release|Any CPU
+		{56086FCB-CB19-4947-B111-14E0D9DA773F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{56086FCB-CB19-4947-B111-14E0D9DA773F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{56086FCB-CB19-4947-B111-14E0D9DA773F}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{56086FCB-CB19-4947-B111-14E0D9DA773F}.Debug|x64.Build.0 = Debug|Any CPU
+		{56086FCB-CB19-4947-B111-14E0D9DA773F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{56086FCB-CB19-4947-B111-14E0D9DA773F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{56086FCB-CB19-4947-B111-14E0D9DA773F}.Release|x64.ActiveCfg = Release|Any CPU
+		{56086FCB-CB19-4947-B111-14E0D9DA773F}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
